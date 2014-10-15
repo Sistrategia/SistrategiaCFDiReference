@@ -32,10 +32,8 @@ namespace Sistrategia.SAT.CFDI
     /// Nodo requerido para expresar la información del contribuyente emisor del comprobante.
     /// </summary>
     /// <remarks>
-    /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd
-    /// [XmlType(TypeName = "t_Ubicacion", Namespace = "http://www.sat.gob.mx/cfd/3")]
-    /// </remarks>    
-    [XmlType(TypeName = "t_Ubicacion", Namespace = "http://www.sat.gob.mx/cfd/3")]
+    /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd    
+    /// </remarks>        
     public interface IEmisor
     {
         /// <summary>
@@ -79,11 +77,7 @@ namespace Sistrategia.SAT.CFDI
         /// <summary>
         /// Nodo requerido para incorporar los regímenes en los que tributa el contribuyente emisor. Puede contener más de un régimen.
         /// </summary>
-        //[XmlElementAttribute("RegimenFiscal", IsNullable = false)]
-        public IList<IRegimenFiscal> RegimenFiscal {
-            get {
-                return this.regimenFiscal;
-            }
-        }
+        [XmlElement("RegimenFiscal", IsNullable = false)]
+        IList<IRegimenFiscal> RegimenFiscal { get; }        
     }
 }
