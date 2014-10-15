@@ -40,10 +40,7 @@ namespace Sistrategia.SAT.CFDI
         /// Atributo requerido para incorporar los regímenes en los que tributa el contribuyente emisor. Puede contener más de un régimen.
         /// Regimen: Atributo requerido para incorporar el nombre del régimen en el que tributa el contribuyente emisor.
         /// </summary> 
-        public object[] Items {
-            get { return this.items; }
-            set { this.items = value; }
-        }
+        object[] Items { get; set; }
 
         [XmlAttribute("Regimen")]
         string Regimen { get; set; }
