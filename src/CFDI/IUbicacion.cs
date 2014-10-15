@@ -1,5 +1,5 @@
 ﻿/**************************************************************************
- * Sistrategia.SAT.CFDI.IUbicacionFiscal.cs 
+ * Sistrategia.SAT.CFDI.IUbicacion.cs 
  * 
  * Author(s):   José Ernesto Ocampo Cicero <ernesto@sistrategia.com>
  * Last Update:	2014-Oct-10
@@ -33,19 +33,19 @@ namespace Sistrategia.SAT.CFDI
     /// </summary>
     /// <remarks>
     /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd
-    /// [XmlType(TypeName = "t_UbicacionFiscal", Namespace = "http://www.sat.gob.mx/cfd/3")]
+    /// [XmlType(TypeName = "t_Ubicacion", Namespace = "http://www.sat.gob.mx/cfd/3")]
     /// </remarks>    
-    [XmlType(TypeName = "t_UbicacionFiscal", Namespace = "http://www.sat.gob.mx/cfd/3")]
-    public interface IUbicacionFiscal // : IUbicacion
+    [XmlType(TypeName = "t_Ubicacion", Namespace = "http://www.sat.gob.mx/cfd/3")]
+    public interface IUbicacion
     {
         /// <summary>
-        /// Este atributo requerido sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.
+        /// Este atributo opcional sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.
         /// </summary>
         /// <remarks>
         /// <code>
-        /// <xs:attribute name="calle" use="required">
+        /// <xs:attribute name="calle" use="optional">
         ///     <xs:annotation>
-        ///         <xs:documentation>Este atributo requerido sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.</xs:documentation>
+        ///         <xs:documentation>Este atributo opcional sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.</xs:documentation>
         ///     </xs:annotation>
         ///     <xs:simpleType>
         ///         <xs:restriction base="xs:string">
@@ -60,8 +60,9 @@ namespace Sistrategia.SAT.CFDI
         string Calle { get; set; }
 
         /// <summary>
-        /// Este atributo opcional sirve para expresar el número particular en donde se da la ubicación sobre una calle dada.
-        /// </summary>        
+        /// Este atributo opcional sirve para expresar el número particular en donde se da 
+        /// la ubicación sobre una calle dada.
+        /// </summary>
         /// <remarks>
         /// <code>
         /// <xs:attribute name="noExterior" use="optional">
@@ -81,9 +82,9 @@ namespace Sistrategia.SAT.CFDI
         string NoExterior { get; set; }
 
         /// <summary>
-        /// Este atributo opcional sirve para expresar información adicional para especificar 
-        /// la ubicación cuando calle y número exterior (noExterior) no resulten suficientes 
-        /// para determinar la ubicación de forma precisa.
+        /// Este atributo opcional sirve para expresar información adicional para especificar la ubicación 
+        /// cuando calle y número exterior (noExterior) no resulten suficientes para determinar 
+        /// la ubicación de forma precisa.
         /// </summary>
         /// <remarks>
         /// <code>
@@ -156,8 +157,8 @@ namespace Sistrategia.SAT.CFDI
         ///     </xs:annotation>
         ///     <xs:simpleType>
         ///         <xs:restriction base="xs:string">
-        ///             <xs:whiteSpace value="collapse"/>
         ///             <xs:minLength value="1"/>
+        ///             <xs:whiteSpace value="collapse"/>
         ///         </xs:restriction>
         ///     </xs:simpleType>
         /// </xs:attribute>
@@ -167,13 +168,14 @@ namespace Sistrategia.SAT.CFDI
         string Referencia { get; set; }
 
         /// <summary>
-        /// Atributo requerido que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.
+        /// Atributo opcional que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) 
+        /// en donde se da la ubicación.
         /// </summary>
         /// <remarks>
         /// <code>
-        /// <xs:attribute name="municipio" use="required">
+        /// <xs:attribute name="municipio" use="optional">
         ///     <xs:annotation>
-        ///         <xs:documentation>Atributo requerido que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.</xs:documentation>
+        ///         <xs:documentation>Atributo opcional que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.</xs:documentation>
         ///     </xs:annotation>
         ///     <xs:simpleType>
         ///         <xs:restriction base="xs:string">
@@ -188,13 +190,13 @@ namespace Sistrategia.SAT.CFDI
         string Municipio { get; set; }
 
         /// <summary>
-        /// Atributo requerido que sirve para precisar el estado o entidad federativa donde se da la ubicación.
+        /// Atributo opcional que sirve para precisar el estado o entidad federativa donde se da la ubicación.
         /// </summary>
         /// <remarks>
         /// <code>
-        /// <xs:attribute name="estado" use="required">
+        /// <xs:attribute name="estado" use="optional">
         ///     <xs:annotation>
-        ///         <xs:documentation>Atributo requerido que sirve para precisar el estado o entidad federativa donde se da la ubicación.</xs:documentation>
+        ///         <xs:documentation>Atributo opcional que sirve para precisar el estado o entidad federativa donde se da la ubicación.</xs:documentation>
         ///     </xs:annotation>
         ///     <xs:simpleType>
         ///         <xs:restriction base="xs:string">
@@ -230,18 +232,17 @@ namespace Sistrategia.SAT.CFDI
         string Pais { get; set; }
 
         /// <summary>
-        /// Atributo requerido que sirve para asentar el código postal en donde se da la ubicación.
+        /// Atributo opcional que sirve para asentar el código postal en donde se da la ubicación.
         /// </summary>
         /// <remarks>
         /// <code>
-        /// <xs:attribute name="codigoPostal" use="required">
+        /// <xs:attribute name="codigoPostal" use="optional">
         ///     <xs:annotation>
-        ///         <xs:documentation>Atributo requerido que sirve para asentar el código postal en donde se da la ubicación.</xs:documentation>
+        ///         <xs:documentation>Atributo opcional que sirve para asentar el código postal en donde se da la ubicación.</xs:documentation>
         ///     </xs:annotation>
         ///     <xs:simpleType>
         ///         <xs:restriction base="xs:string">
         ///             <xs:whiteSpace value="collapse"/>
-        ///             <xs:length value="5"/>
         ///         </xs:restriction>
         ///     </xs:simpleType>
         /// </xs:attribute>
