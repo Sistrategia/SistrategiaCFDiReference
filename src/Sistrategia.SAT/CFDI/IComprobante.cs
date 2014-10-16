@@ -37,6 +37,15 @@ namespace Sistrategia.SAT.CFDI
     /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd    
     /// </remarks>    
     public interface IComprobante
-    {             
+    {
+        /// <summary>
+        /// Atributo requerido con valor prefijado a 3.2 que indica la versión del estándar bajo el que se encuentra expresado el comprobante.
+        /// </summary>
+        /// <remarks>
+        /// Requerido con valor prefijado a 3.2
+        /// No debe contener espacios en blanco
+        /// </remarks>
+        [XmlAttribute("version")]
+        string Version { get; set; }     
     }
 }

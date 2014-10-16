@@ -36,8 +36,54 @@ namespace Sistrategia.SAT.CFDI
     /// El cambio se realizó en la versión 3.2
     /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd    
     /// </remarks>  
+    [Serializable()]
+    [DesignerCategory("code")]
+    [XmlType(AnonymousType = true, Namespace = "http://www.sat.gob.mx/cfd/3")]
+    [XmlRoot(Namespace = "http://www.sat.gob.mx/cfd/3", IsNullable = false)]
     public class Comprobante : IComprobante
     {
+        #region Private Fields
+        private string version;
+
+        private IEmisor emisor;
+        #endregion
+
+        #region Constructors
+        public Comprobante() {
+            this.version = "3.2";
+            this.emisor = new Emisor();
+            //this.receptor = new ComprobanteReceptor();
+        }
+        #endregion
+
+        /// <summary>
+        /// Atributo requerido con valor prefijado a 3.2 que indica la versión del estándar bajo el que se encuentra expresado el comprobante.
+        /// </summary>
+        /// <remarks>
+        /// Requerido con valor prefijado a 3.2
+        /// No debe contener espacios en blanco
+        /// </remarks>
+        [XmlAttribute("version")]
+        public string Version {
+            get { return version; }
+            set {
+                //if (value != "3.2") {
+                //    throw new ArgumentException("Atributo requerido con valor prefijado a 3.2");
+                //}
+                this.version = value; // validar las posibles versiones
+            }
+        }
+
+
+
+        /// <summary>
+        /// Nodo requerido para expresar la información del contribuyente emisor del comprobante.
+        /// </summary>
+        [XmlElement("Emisor", typeof(Emisor))]
+        public IEmisor Emisor {
+            get { return this.emisor; }
+            set { this.emisor = value; }
+        }
           
     }
 }

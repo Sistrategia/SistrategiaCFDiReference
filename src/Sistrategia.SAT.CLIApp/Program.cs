@@ -19,33 +19,36 @@ namespace cfdi
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");
             ns.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            MemoryStream ms = new MemoryStream();
-            XmlTextWriter xmlWriter = new XmlTextWriter(ms, System.Text.Encoding.UTF8);
+            //MemoryStream ms = new MemoryStream();
+            //XmlTextWriter xmlWriter = new XmlTextWriter(ms, System.Text.Encoding.UTF8);
             XmlSerializer serializer = null;
+            StreamWriter xmlWriter = new System.IO.StreamWriter(Directory.GetCurrentDirectory() + "\\cfdi.xml", false, System.Text.Encoding.UTF8);
 
             //serializer = new System.Xml.Serialization.XmlSerializer(cfd.GetType());
 
-            XmlAttributes attrs = new XmlAttributes();
-            XmlElementAttribute attr = new XmlElementAttribute();
-            attr.Namespace = "http://www.sat.gob.mx/cfd/3";
-            attrs.XmlElements.Add(attr);
-            XmlAttributeOverrides attrOverrides = new XmlAttributeOverrides();
-            //attrOverrides.Add(typeof(Sistrategia.SAT.CFDI.Comprobante), "cfdi:Comprobante", attrs);
-            attrOverrides.Add(typeof(Sistrategia.SAT.CFDI.IComprobante), "cfdi:Comprobante", attrs);
-            serializer = new XmlSerializer(cfdi.GetType(), attrOverrides);
+            //XmlAttributes attrs = new XmlAttributes();
+            //XmlElementAttribute attr = new XmlElementAttribute();
+            //attr.Namespace = "http://www.sat.gob.mx/cfd/3";
+            //attrs.XmlElements.Add(attr);
+            //XmlAttributeOverrides attrOverrides = new XmlAttributeOverrides();
+            ////attrOverrides.Add(typeof(Sistrategia.SAT.CFDI.Comprobante), "cfdi:Comprobante", attrs);
+            //attrOverrides.Add(typeof(Sistrategia.SAT.CFDI.IComprobante), "cfdi:Comprobante", attrs);
+            //serializer = new XmlSerializer(cfdi.GetType(), attrOverrides);
             //serializer = new XmlSerializer(typeof(Sistrategia.SAT.CFDI.IComprobante), attrOverrides);
 
+            serializer = new XmlSerializer(cfdi.GetType());
+            //serializer.Serialize(xmlWriter, cfdi); //, "utf-8");
             serializer.Serialize(xmlWriter, cfdi, ns); //, "utf-8");
             xmlWriter.Flush();
-            ms.Seek(0, System.IO.SeekOrigin.Begin);
-            ms.Close();
-            string xmlString = System.Text.Encoding.UTF8.GetString(ms.ToArray());
+            //ms.Seek(0, System.IO.SeekOrigin.Begin);
+            //ms.Close();
+            //string xmlString = System.Text.Encoding.UTF8.GetString(ms.ToArray());
             xmlWriter.Close();
-            byte[] file = System.Text.Encoding.UTF8.GetBytes(xmlString);
-            //byte[] file = ms.ToArray();
-            byte[] response = null;
+            //byte[] file = System.Text.Encoding.UTF8.GetBytes(xmlString);
+            ////byte[] file = ms.ToArray();
+            //byte[] response = null;
 
-            Console.Write(xmlString);
+            //Console.Write(xmlString);
 
 
             
