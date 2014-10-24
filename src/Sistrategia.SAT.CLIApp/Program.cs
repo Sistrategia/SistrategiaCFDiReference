@@ -14,7 +14,7 @@ namespace cfdi
     {
         static void Main(string[] args) {
 
-            Sistrategia.SAT.CFDI.IComprobante cfdi = Sistrategia.SAT.SATManager.CreateComprobante();
+            Sistrategia.SAT.CFDI.Comprobante cfdi = Sistrategia.SAT.SATManager.CreateComprobante();
 
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");

@@ -40,12 +40,12 @@ namespace Sistrategia.SAT.CFDI
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true, Namespace = "http://www.sat.gob.mx/cfd/3")]
     [XmlRoot(Namespace = "http://www.sat.gob.mx/cfd/3", IsNullable = false)]
-    public class Comprobante : IComprobante
+    public class Comprobante // : IComprobante
     {
         #region Private Fields
         private string version;
 
-        private IEmisor emisor;
+        private Emisor emisor;
         #endregion
 
         #region Constructors
@@ -80,7 +80,7 @@ namespace Sistrategia.SAT.CFDI
         /// Nodo requerido para expresar la información del contribuyente emisor del comprobante.
         /// </summary>
         [XmlElement("Emisor", typeof(Emisor))]
-        public IEmisor Emisor {
+        public Emisor Emisor {
             get { return this.emisor; }
             set { this.emisor = value; }
         }

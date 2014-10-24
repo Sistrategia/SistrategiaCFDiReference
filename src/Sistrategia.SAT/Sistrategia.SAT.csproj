@@ -41,11 +41,9 @@
   <ItemGroup>
     <Compile Include="CFDI\Comprobante.cs" />
     <Compile Include="CFDI\Emisor.cs" />
-    <Compile Include="CFDI\IComprobante.cs" />
-    <Compile Include="CFDI\IEmisor.cs" />
-    <Compile Include="CFDI\IRegimenFiscal.cs" />
-    <Compile Include="CFDI\IUbicacion.cs" />
-    <Compile Include="CFDI\IUbicacionFiscal.cs" />
+    <Compile Include="CFDI\RegimenFiscal.cs" />
+    <Compile Include="CFDI\Ubicacion.cs" />
+    <Compile Include="CFDI\UbicacionFiscal.cs" />
     <Compile Include="SATManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

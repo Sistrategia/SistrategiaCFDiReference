@@ -1,5 +1,5 @@
 ﻿/**************************************************************************
- * Sistrategia.SAT.CFDI.IUbicacionFiscal.cs 
+ * Sistrategia.SAT.CFDI.UbicacionFiscal.cs 
  * 
  * Author(s):   José Ernesto Ocampo Cicero <ernesto@sistrategia.com>
  * Last Update:	2014-Oct-10
@@ -32,12 +32,26 @@ namespace Sistrategia.SAT.CFDI
     /// Tipo definido para expresar domicilios o direcciones
     /// </summary>
     /// <remarks>
-    /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd
-    /// [XmlType(TypeName = "t_UbicacionFiscal", Namespace = "http://www.sat.gob.mx/cfd/3")]
+    /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd    
     /// </remarks>    
+    [Serializable]
+    [DesignerCategory("code")]
     [XmlType(TypeName = "t_UbicacionFiscal", Namespace = "http://www.sat.gob.mx/cfd/3")]
-    public interface IUbicacionFiscal // : IUbicacion
+    public class UbicacionFiscal // : IUbicacionFiscal, IUbicacion
     {
+        #region Private fields
+        private string calle;
+        private string noExterior;
+        private string noInterior;
+        private string colonia;
+        private string localidad;
+        private string referencia;
+        private string municipio;
+        private string estado;
+        private string pais;
+        private string codigoPostal;
+        #endregion
+
         /// <summary>
         /// Este atributo requerido sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.
         /// </summary>
@@ -57,7 +71,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("calle")]
-        string Calle { get; set; }
+        public string Calle {
+            get { return this.calle; }
+            set { this.calle = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Este atributo opcional sirve para expresar el número particular en donde se da la ubicación sobre una calle dada.
@@ -78,7 +95,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("noExterior")]
-        string NoExterior { get; set; }
+        public string NoExterior {
+            get { return this.noExterior; }
+            set { this.noExterior = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Este atributo opcional sirve para expresar información adicional para especificar 
@@ -101,7 +121,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("noInterior")]
-        string NoInterior { get; set; }
+        public string NoInterior {
+            get { return this.noInterior; }
+            set { this.noInterior = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Este atributo opcional sirve para precisar la colonia en donde se da la ubicación cuando se desea ser más específico en casos de ubicaciones urbanas.
@@ -122,7 +145,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("colonia")]
-        string Colonia { get; set; }
+        public string Colonia {
+            get { return this.colonia; }
+            set { this.colonia = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Atributo opcional que sirve para precisar la ciudad o población donde se da la ubicación.
@@ -143,7 +169,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("localidad")]
-        string Localidad { get; set; }
+        public string Localidad {
+            get { return this.localidad; }
+            set { this.localidad = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Atributo opcional para expresar una referencia de ubicación adicional.
@@ -164,7 +193,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("referencia")]
-        string Referencia { get; set; }
+        public string Referencia {
+            get { return this.referencia; }
+            set { this.referencia = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Atributo requerido que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.
@@ -185,7 +217,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("municipio")]
-        string Municipio { get; set; }
+        public string Municipio {
+            get { return this.municipio; }
+            set { this.municipio = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Atributo requerido que sirve para precisar el estado o entidad federativa donde se da la ubicación.
@@ -206,7 +241,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("estado")]
-        string Estado { get; set; }
+        public string Estado {
+            get { return this.estado; }
+            set { this.estado = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Atributo requerido que sirve para precisar el país donde se da la ubicación.
@@ -227,7 +265,10 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("pais")]
-        string Pais { get; set; }
+        public string Pais {
+            get { return this.pais; }
+            set { this.pais = SATManager.NormalizeWhiteSpace(value); }
+        }
 
         /// <summary>
         /// Atributo requerido que sirve para asentar el código postal en donde se da la ubicación.
@@ -248,6 +289,9 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlAttribute("codigoPostal")]
-        string CodigoPostal { get; set; }
+        public string CodigoPostal {
+            get { return this.codigoPostal; }
+            set { this.codigoPostal = SATManager.NormalizeWhiteSpace(value); }
+        }
     }
 }
