@@ -39,14 +39,14 @@ namespace Sistrategia.SAT.CFDI
     [XmlType(AnonymousType = true, Namespace = "http://www.sat.gob.mx/cfd/3")]
     public class RegimenFiscal
     {
-        private object[] items;
+        //private object[] items;
         private string regimen;
 
-        /// <summary>
-        /// Atributo requerido para incorporar los regímenes en los que tributa el contribuyente emisor. Puede contener más de un régimen.
-        /// Regimen: Atributo requerido para incorporar el nombre del régimen en el que tributa el contribuyente emisor.
-        /// </summary> 
-        object[] Items { get; set; }
+        ///// <summary>
+        ///// Atributo requerido para incorporar los regímenes en los que tributa el contribuyente emisor. Puede contener más de un régimen.
+        ///// Regimen: Atributo requerido para incorporar el nombre del régimen en el que tributa el contribuyente emisor.
+        ///// </summary> 
+        //object[] Items { get; set; }
 
         /// <summary>
         /// Nodo requerido para incorporar los regímenes en los que tributa el contribuyente emisor. Puede contener más de un régimen.

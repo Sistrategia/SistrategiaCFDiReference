@@ -15,6 +15,19 @@ namespace cfdi
         static void Main(string[] args) {
 
             Sistrategia.SAT.CFDI.Comprobante cfdi = Sistrategia.SAT.SATManager.CreateComprobante();
+            cfdi.Emisor.RFC = "XAXX010101000";
+            cfdi.Emisor.Nombre = "PUBLICO EN GENERAL";
+            cfdi.Emisor.DomicilioFiscal = new Sistrategia.SAT.CFDI.UbicacionFiscal();            
+            cfdi.Emisor.DomicilioFiscal.Pais = "MEXICO";
+            cfdi.Emisor.RegimenFiscal = new List<Sistrategia.SAT.CFDI.RegimenFiscal>();
+            //cfdi.Emisor.RegimenFiscal = new Sistrategia.SAT.CFDI.RegimenFiscal[2];
+            cfdi.Emisor.RegimenFiscal.Add(new Sistrategia.SAT.CFDI.RegimenFiscal());
+            //cfdi.Emisor.RegimenFiscal[0] = new Sistrategia.SAT.CFDI.RegimenFiscal();
+            cfdi.Emisor.RegimenFiscal[0].Regimen = "Ley General P.M.";
+
+            cfdi.Emisor.RegimenFiscal.Add(new Sistrategia.SAT.CFDI.RegimenFiscal());
+            //cfdi.Emisor.RegimenFiscal[1] = new Sistrategia.SAT.CFDI.RegimenFiscal();
+            cfdi.Emisor.RegimenFiscal[1].Regimen = "Otro Régimen";
 
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");
@@ -23,6 +36,7 @@ namespace cfdi
             //XmlTextWriter xmlWriter = new XmlTextWriter(ms, System.Text.Encoding.UTF8);
             XmlSerializer serializer = null;
             StreamWriter xmlWriter = new System.IO.StreamWriter(Directory.GetCurrentDirectory() + "\\cfdi.xml", false, System.Text.Encoding.UTF8);
+            StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
 
             //serializer = new System.Xml.Serialization.XmlSerializer(cfd.GetType());
 
@@ -36,10 +50,16 @@ namespace cfdi
             //serializer = new XmlSerializer(cfdi.GetType(), attrOverrides);
             //serializer = new XmlSerializer(typeof(Sistrategia.SAT.CFDI.IComprobante), attrOverrides);
 
-            serializer = new XmlSerializer(cfdi.GetType());
+            serializer = new XmlSerializer(cfdi.GetType(), new Type[] { 
+                typeof(Sistrategia.SAT.CFDI.Emisor)
+                ,typeof(Sistrategia.SAT.CFDI.RegimenFiscal)
+                ,typeof(Sistrategia.SAT.CFDI.Ubicacion)
+                ,typeof(Sistrategia.SAT.CFDI.UbicacionFiscal)
+            });
             //serializer.Serialize(xmlWriter, cfdi); //, "utf-8");
             serializer.Serialize(xmlWriter, cfdi, ns); //, "utf-8");
             xmlWriter.Flush();
+
             //ms.Seek(0, System.IO.SeekOrigin.Begin);
             //ms.Close();
             //string xmlString = System.Text.Encoding.UTF8.GetString(ms.ToArray());
@@ -50,7 +70,13 @@ namespace cfdi
 
             //Console.Write(xmlString);
 
+            object theSource = serializer.Deserialize(xmlReader); //, "utf-8");
 
+            Sistrategia.SAT.CFDI.Comprobante cfdi2 = theSource as Sistrategia.SAT.CFDI.Comprobante;
+
+            System.Console.WriteLine(theSource.GetType().ToString());
+
+            cfdi2.ToString();
             
             //if ("3.2".Equals(cfd.Version)) {
             //    ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");

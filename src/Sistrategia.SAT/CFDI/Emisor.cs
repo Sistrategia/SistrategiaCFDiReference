@@ -45,7 +45,9 @@ namespace Sistrategia.SAT.CFDI
         private string nombre;
         private UbicacionFiscal domicilioFiscal;
         private Ubicacion expedidoEn;
-        private IList<RegimenFiscal> regimenFiscal;
+        //private IList<RegimenFiscal> regimenFiscal;
+        private List<RegimenFiscal> regimenFiscal;
+        //private RegimenFiscal[] regimenFiscal;
         #endregion
 
         /// <summary>
@@ -171,7 +173,9 @@ namespace Sistrategia.SAT.CFDI
         /// </code>
         /// </remarks>
         [XmlElement("RegimenFiscal", IsNullable = false)]
-        public IList<RegimenFiscal> RegimenFiscal {
+        public List<RegimenFiscal> RegimenFiscal {
+        //public RegimenFiscal[] RegimenFiscal {        
+        //public IList<RegimenFiscal> RegimenFiscal {
             get { return this.regimenFiscal; }
             set { this.regimenFiscal = value; }
         }
