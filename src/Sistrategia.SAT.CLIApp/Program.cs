@@ -32,6 +32,9 @@ namespace cfdi
             //cfdi.Emisor.RegimenFiscal[1] = new Sistrategia.SAT.CFDI.RegimenFiscal();
             cfdi.Emisor.RegimenFiscal[1].Regimen = "Otro Régimen";
 
+            //cfdi.Descuento = 10.0M;
+            //cfdi.DescuentoSpecified = true;
+
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");
             ns.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
@@ -73,8 +76,8 @@ namespace cfdi
 
             //Console.Write(xmlString);
 
-            //StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
-            StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\cfdi.xml", System.Text.Encoding.UTF8);
+            StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
+            //StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\cfdi.xml", System.Text.Encoding.UTF8);
             object theSource = serializer.Deserialize(xmlReader); //, "utf-8");
 
             Sistrategia.SAT.CFDI.Comprobante cfdi2 = theSource as Sistrategia.SAT.CFDI.Comprobante;
