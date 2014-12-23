@@ -44,6 +44,10 @@ namespace Sistrategia.SAT.CFDI
     {
         #region Private Fields
         private string version;
+        private string serie;   // opcional en CFDi
+        private string folio;   // opcional en CFDi
+        private DateTime fecha;
+        private string sello;
 
         private Emisor emisor;
         #endregion
@@ -74,7 +78,67 @@ namespace Sistrategia.SAT.CFDI
             }
         }
 
+        /// <summary>
+        /// Atributo opcional para precisar la serie para control interno del contribuyente. Este atributo acepta una cadena de caracteres alfabéticos de 1 a 25 caracteres sin incluir caracteres acentuados.
+        /// </summary>
+        /// <remarks>
+        /// Opcional
+        /// El largo debe estar entre 1 y 25 caracteres
+        /// No debe contener espacios en blanco
+        /// </remarks>
+        [XmlAttribute("serie")]
+        public string Serie {
+            get { return this.serie; }
+            set { this.serie = value; }
+        }
 
+        /// <summary>
+        ///   Atributo opcional para control interno del contribuyente que acepta un valor numérico entero superior a 0 que expresa el folio del comprobante.
+        /// </summary>
+        /// <remarks>
+        /// opcional
+        /// El largo debe estar entre 1 y 20 caracteres
+        /// No debe contener espacios en blanco
+        /// </remarks>
+        [XmlAttribute("folio")]
+        public string Folio {
+            get { return this.folio; }
+            set { this.folio = value; }
+        }
+
+        /// <summary>
+        /// Atributo requerido para la expresión de la fecha y hora de expedición del comprobante fiscal. Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.
+        /// </summary>
+        /// <remarks>
+        /// Requerido
+        /// Fecha y hora de expedición del comprobante fiscal
+        /// No debe contener espacios en blanco
+        /// </remarks>
+        [XmlAttribute("fecha")]
+        public DateTime Fecha {
+            get { return this.fecha; }
+            set { 
+                // this.fecha = value; 
+                string fechaString = Convert.ToDateTime(value).ToString("dd/MM/yyyy HH:mm:ss");
+                IFormatProvider culture = new System.Globalization.CultureInfo("es-MX", true);
+                value = DateTime.ParseExact(fechaString, "dd/MM/yyyy HH:mm:ss", culture);
+                this.fecha = value;
+            }
+        }
+
+        /// <summary>
+        /// Atributo requerido para contener el sello digital del comprobante fiscal, al que hacen referencia las reglas de resolución miscelánea aplicable. El sello deberá ser expresado cómo una cadena de texto en formato Base 64.
+        /// </summary>
+        /// <remarks>
+        /// Requerido
+        /// El sello deberá ser expresado cómo una cadena de texto en formato Base 64.
+        /// No debe contener espacios en blanco
+        /// </remarks>
+        [XmlAttribute("sello")]
+        public string Sello {
+            get { return this.sello; }
+            set { this.sello = value; }
+        }
 
         /// <summary>
         /// Nodo requerido para expresar la información del contribuyente emisor del comprobante.

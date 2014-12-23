@@ -15,6 +15,9 @@ namespace cfdi
         static void Main(string[] args) {
 
             Sistrategia.SAT.CFDI.Comprobante cfdi = Sistrategia.SAT.SATManager.CreateComprobante();
+            cfdi.Fecha = DateTime.Now;
+            //IFormatProvider culture = new System.Globalization.CultureInfo("es-MX", true);
+            //cfdi.Fecha = DateTime.ParseExact("22/12/2014 10:30:20", "dd/MM/yyyy HH:mm:ss", culture);
             cfdi.Emisor.RFC = "XAXX010101000";
             cfdi.Emisor.Nombre = "PUBLICO EN GENERAL";
             cfdi.Emisor.DomicilioFiscal = new Sistrategia.SAT.CFDI.UbicacionFiscal();            
@@ -36,7 +39,7 @@ namespace cfdi
             //XmlTextWriter xmlWriter = new XmlTextWriter(ms, System.Text.Encoding.UTF8);
             XmlSerializer serializer = null;
             StreamWriter xmlWriter = new System.IO.StreamWriter(Directory.GetCurrentDirectory() + "\\cfdi.xml", false, System.Text.Encoding.UTF8);
-            StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
+            
 
             //serializer = new System.Xml.Serialization.XmlSerializer(cfd.GetType());
 
@@ -70,6 +73,8 @@ namespace cfdi
 
             //Console.Write(xmlString);
 
+            //StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
+            StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\cfdi.xml", System.Text.Encoding.UTF8);
             object theSource = serializer.Deserialize(xmlReader); //, "utf-8");
 
             Sistrategia.SAT.CFDI.Comprobante cfdi2 = theSource as Sistrategia.SAT.CFDI.Comprobante;
