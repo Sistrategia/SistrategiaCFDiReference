@@ -20,7 +20,7 @@ namespace cfdi
             //cfdi.Fecha = DateTime.ParseExact("22/12/2014 10:30:20", "dd/MM/yyyy HH:mm:ss", culture);
             cfdi.Emisor.RFC = "XAXX010101000";
             cfdi.Emisor.Nombre = "PUBLICO EN GENERAL";
-            cfdi.Emisor.DomicilioFiscal = new Sistrategia.SAT.CFDI.UbicacionFiscal();            
+            cfdi.Emisor.DomicilioFiscal = new Sistrategia.SAT.CFDI.UbicacionFiscal();
             cfdi.Emisor.DomicilioFiscal.Pais = "MEXICO";
             cfdi.Emisor.RegimenFiscal = new List<Sistrategia.SAT.CFDI.RegimenFiscal>();
             //cfdi.Emisor.RegimenFiscal = new Sistrategia.SAT.CFDI.RegimenFiscal[2];
@@ -31,6 +31,11 @@ namespace cfdi
             cfdi.Emisor.RegimenFiscal.Add(new Sistrategia.SAT.CFDI.RegimenFiscal());
             //cfdi.Emisor.RegimenFiscal[1] = new Sistrategia.SAT.CFDI.RegimenFiscal();
             cfdi.Emisor.RegimenFiscal[1].Regimen = "Otro Régimen";
+
+            cfdi.Receptor.RFC = "XAXX010101000";
+            cfdi.Receptor.Nombre = "PUBLICO EN GENERAL";
+            cfdi.Receptor.Domicilio = new Sistrategia.SAT.CFDI.Ubicacion();
+            cfdi.Receptor.Domicilio.Pais = "MEXICO";
 
             //cfdi.Descuento = 10.0M;
             //cfdi.DescuentoSpecified = true;

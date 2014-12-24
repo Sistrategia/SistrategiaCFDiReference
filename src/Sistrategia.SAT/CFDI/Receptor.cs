@@ -3,7 +3,7 @@
  * 
  * Author(s):   José Ernesto Ocampo Cicero <ernesto@sistrategia.com>
  * Last Update:	2014-Oct-10
- * Created:	    2010-Dec-16
+ * Created:	    2010-Dec-24
  * 
  * (C) 2010-2014 José Ernesto Ocampo Cicero
  * Copyright (C) José Ernesto Ocampo Cicero, 2010-2014
@@ -49,8 +49,32 @@ namespace Sistrategia.SAT.CFDI
         /// <summary>
         /// Atributo requerido para precisar la Clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del comprobante.
         /// </summary>
+        /// <remarks>
+        /// <code>
+        /// <xs:attribute name="rfc" type="cfdi:t_RFC" use="required">
+        ///   <xs:annotation>
+        ///     <xs:documentation>
+        ///       Atributo requerido para precisar la Clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del comprobante.
+        ///     </xs:documentation>
+        ///   </xs:annotation>
+        /// </xs:attribute>
+        /// </code>
+        /// <code>
+        /// <xs:simpleType name="t_RFC">
+        ///     <xs:annotation>
+        ///         <xs:documentation>Tipo definido para expresar claves del Registro Federal de Contribuyentes</xs:documentation>
+        ///     </xs:annotation>
+        ///     <xs:restriction base="xs:string">
+        ///         <xs:minLength value="12"/>
+        ///         <xs:maxLength value="13"/>
+        ///         <xs:whiteSpace value="collapse"/>
+        ///         <xs:pattern value="[A-Z,Ñ,&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?"/>
+        ///     </xs:restriction>
+        /// </xs:simpleType>
+        /// </code>
+        /// </remarks>
         [XmlAttribute("rfc")]
-        string RFC {
+        public string RFC {
             get { return this.rfc; }
             set { this.rfc = value; }
         }
@@ -58,8 +82,25 @@ namespace Sistrategia.SAT.CFDI
         /// <summary>
         /// Atributo opcional para precisar el nombre o razón social del contribuyente receptor.
         /// </summary>
+        /// <remarks>
+        /// <code>        
+        /// <xs:attribute name="nombre" use="optional">
+        ///   <xs:annotation>
+        ///     <xs:documentation>
+        ///       Atributo opcional para el nombre, denominación o razón social del contribuyente receptor del comprobante.
+        ///     </xs:documentation>
+        ///   </xs:annotation>
+        ///   <xs:simpleType>
+        ///     <xs:restriction base="xs:string">
+        ///       <xs:minLength value="1"/>
+        ///       <xs:whiteSpace value="collapse"/>
+        ///     </xs:restriction>
+        ///   </xs:simpleType>
+        /// </xs:attribute>
+        /// </code>
+        /// </remarks>
         [XmlAttribute("nombre")]
-        string Nombre {
+        public string Nombre {
             get { return this.nombre; }
             set { this.nombre = value; }
         }
@@ -67,6 +108,19 @@ namespace Sistrategia.SAT.CFDI
         /// <summary>
         /// Nodo opcional para la definición de la ubicación donde se da el domicilio del receptor del comprobante fiscal.
         /// </summary>
+        /// <remarks>
+        /// <code>
+        /// <xs:sequence>
+        ///   <xs:element name="Domicilio" type="cfdi:t_Ubicacion" minOccurs="0">
+        ///     <xs:annotation>
+        ///       <xs:documentation>
+        ///         Nodo opcional para la definición de la ubicación donde se da el domicilio del receptor del comprobante fiscal.
+        ///       </xs:documentation>
+        ///     </xs:annotation>
+        ///   </xs:element>
+        /// </xs:sequence>
+        /// </code>
+        /// </remarks>
         [XmlElement("Domicilio")]
         public Ubicacion Domicilio {
             get { return this.domicilio; }

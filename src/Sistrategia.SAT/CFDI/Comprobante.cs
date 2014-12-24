@@ -34,7 +34,8 @@ namespace Sistrategia.SAT.CFDI
     /// <remarks>
     /// Antes la definición era: "Estándar para la expresión de comprobantes fiscales digitales."
     /// El cambio se realizó en la versión 3.2
-    /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd    
+    /// See full schema at http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd
+    /// The referenced schema in the xsd at: http://www.sat.gob.mx/cfd/3/cfdv32.xsd
     /// </remarks>  
     [Serializable()]
     [DesignerCategory("code")]
@@ -48,7 +49,6 @@ namespace Sistrategia.SAT.CFDI
         private string folio;   // opcional en CFDi
         private DateTime fecha;
         private string sello;
-
 
         //private string noAprobacion;
         //private string anoAprobacion;
