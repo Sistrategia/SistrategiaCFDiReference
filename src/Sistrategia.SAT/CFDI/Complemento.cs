@@ -39,7 +39,7 @@ namespace Sistrategia.SAT.CFDI
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true, Namespace = "http://www.sat.gob.mx/cfd/3")]
-    public class ComprobanteComplemento
+    public class Complemento
     {
         private XmlElement[] any;
 

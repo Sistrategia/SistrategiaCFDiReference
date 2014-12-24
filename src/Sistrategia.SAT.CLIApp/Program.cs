@@ -40,6 +40,9 @@ namespace cfdi
             //cfdi.Descuento = 10.0M;
             //cfdi.DescuentoSpecified = true;
 
+            cfdi.Impuestos = new Sistrategia.SAT.CFDI.Impuestos();
+            //cfdi.Impuestos.Retenciones = new ()
+
             XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
             ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");
             ns.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
@@ -81,15 +84,14 @@ namespace cfdi
 
             //Console.Write(xmlString);
 
-            StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
-            //StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\cfdi.xml", System.Text.Encoding.UTF8);
-            object theSource = serializer.Deserialize(xmlReader); //, "utf-8");
+            //StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\source.xml", System.Text.Encoding.UTF8);
+            ////StreamReader xmlReader = new System.IO.StreamReader(Directory.GetCurrentDirectory() + "\\cfdi.xml", System.Text.Encoding.UTF8);
+            //object theSource = serializer.Deserialize(xmlReader); //, "utf-8");
+            //Sistrategia.SAT.CFDI.Comprobante cfdi2 = theSource as Sistrategia.SAT.CFDI.Comprobante;
+            //System.Console.WriteLine(theSource.GetType().ToString());
+            //cfdi2.ToString();
 
-            Sistrategia.SAT.CFDI.Comprobante cfdi2 = theSource as Sistrategia.SAT.CFDI.Comprobante;
 
-            System.Console.WriteLine(theSource.GetType().ToString());
-
-            cfdi2.ToString();
             
             //if ("3.2".Equals(cfd.Version)) {
             //    ns.Add("cfdi", "http://www.sat.gob.mx/cfd/3");

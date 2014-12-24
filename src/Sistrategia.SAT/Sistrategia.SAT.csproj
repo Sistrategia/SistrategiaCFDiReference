@@ -41,10 +41,14 @@
   <ItemGroup>
     <Compile Include="CFDI\Complemento.cs" />
     <Compile Include="CFDI\Comprobante.cs" />
+    <Compile Include="CFDI\Concepto.cs" />
     <Compile Include="CFDI\Emisor.cs" />
+    <Compile Include="CFDI\Impuestos.cs" />
     <Compile Include="CFDI\Receptor.cs" />
     <Compile Include="CFDI\RegimenFiscal.cs" />
+    <Compile Include="CFDI\Retencion.cs" />
     <Compile Include="CFDI\Timbre.cs" />
+    <Compile Include="CFDI\Traslado.cs" />
     <Compile Include="CFDI\Ubicacion.cs" />
     <Compile Include="CFDI\UbicacionFiscal.cs" />
     <Compile Include="SATManager.cs" />

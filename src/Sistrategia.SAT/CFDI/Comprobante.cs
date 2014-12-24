@@ -23,6 +23,7 @@
  *************************************************************************/
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
@@ -82,8 +83,13 @@ namespace Sistrategia.SAT.CFDI
 
 
         private Emisor emisor;
-        private Receptor receptor;
-        private ComprobanteComplemento complemento;
+        private Receptor receptor;        
+        //private Concepto[] conceptos;
+        private List<Concepto> conceptos;
+        private Impuestos impuestos;
+
+        private Complemento complemento;
+        //private Addenda addenda;
         #endregion
 
         #region Constructors
@@ -711,15 +717,13 @@ namespace Sistrategia.SAT.CFDI
         //    //set { this.currentData.Conceptos = value; }
         //}
 
-        ///// <summary>
-        ///// Nodo requerido para capturar los impuestos aplicables.
-        ///// </summary>
-        //public IComprobanteImpuestos Impuestos {
-        //    get { return this.currentData.Impuestos; }
-        //    //set { this.currentData.Impuestos = value; }
-        //}
-
-
+        /// <summary>
+        /// Nodo requerido para capturar los impuestos aplicables.
+        /// </summary>
+        public Impuestos Impuestos {
+            get { return this.impuestos; }
+            set { this.impuestos = value; }
+        }
 
 
         /// <summary>
@@ -727,7 +731,7 @@ namespace Sistrategia.SAT.CFDI
         /// y los nodos complementarios determinados por el SAT, de acuerdo a las disposiciones particulares 
         /// a un sector o actividad específica.
         /// </summary>
-        public ComprobanteComplemento Complemento {
+        public Complemento Complemento {
             get { return this.complemento; }
             set { this.complemento = value; }
         }

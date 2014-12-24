@@ -30,7 +30,7 @@ using System.Xml.Serialization;
 
 namespace Sistrategia.SAT.CFDI
 {
-    public class ComprobanteTimbre // : XmlElement
+    public class Timbre // : XmlElement
     {
         private string version;
         private string uuid;
