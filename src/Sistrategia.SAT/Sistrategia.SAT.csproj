@@ -43,6 +43,7 @@
     <Compile Include="CFDI\ComprobanteComplemento.cs" />
     <Compile Include="CFDI\ComprobanteTimbre.cs" />
     <Compile Include="CFDI\Emisor.cs" />
+    <Compile Include="CFDI\Receptor.cs" />
     <Compile Include="CFDI\RegimenFiscal.cs" />
     <Compile Include="CFDI\Ubicacion.cs" />
     <Compile Include="CFDI\UbicacionFiscal.cs" />

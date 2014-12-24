@@ -38,7 +38,7 @@ namespace Sistrategia.SAT.CFDI
     [Serializable]
     [DesignerCategory("code")]
     [XmlType(AnonymousType = true, Namespace = "http://www.sat.gob.mx/cfd/3")]
-    public class Emisor // : IEmisor
+    public class Emisor
     {
         #region Private Fields
         private string rfc;

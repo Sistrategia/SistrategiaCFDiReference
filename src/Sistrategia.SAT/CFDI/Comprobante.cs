@@ -82,6 +82,7 @@ namespace Sistrategia.SAT.CFDI
 
 
         private Emisor emisor;
+        private Receptor receptor;
         private ComprobanteComplemento complemento;
         #endregion
 
@@ -89,7 +90,7 @@ namespace Sistrategia.SAT.CFDI
         public Comprobante() {
             this.version = "3.2";
             this.emisor = new Emisor();
-            //this.receptor = new ComprobanteReceptor();
+            this.receptor = new Receptor();
         }
         #endregion
 
@@ -683,13 +684,13 @@ namespace Sistrategia.SAT.CFDI
             set { this.emisor = value; }
         }
 
-        ///// <summary>
-        ///// Nodo requerido para precisar la información del contribuyente receptor del comprobante.
-        ///// </summary>
-        //public IComprobanteReceptor Receptor {
-        //    get { return this.currentData.Receptor; }
-        //    set { this.currentData.Receptor = value as ComprobanteReceptor; }
-        //}
+        /// <summary>
+        /// Nodo requerido para precisar la información del contribuyente receptor del comprobante.
+        /// </summary>
+        public Receptor Receptor {
+            get { return this.receptor; }
+            set { this.receptor = value; }
+        }
 
 
         /////// <summary>
