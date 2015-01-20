@@ -51,6 +51,19 @@
     <Compile Include="CFDI\Traslado.cs" />
     <Compile Include="CFDI\Ubicacion.cs" />
     <Compile Include="CFDI\UbicacionFiscal.cs" />
+    <Compile Include="RetencionPago\Retenciones.cs" />
+    <Compile Include="RetencionPago\RetencionesAddenda.cs" />
+    <Compile Include="RetencionPago\RetencionesComplemento.cs" />
+    <Compile Include="RetencionPago\RetencionesEmisor.cs" />
+    <Compile Include="RetencionPago\RetencionesPeriodo.cs" />
+    <Compile Include="RetencionPago\RetencionesReceptor.cs" />
+    <Compile Include="RetencionPago\RetencionesReceptorExtranjero.cs" />
+    <Compile Include="RetencionPago\RetencionesReceptorNacional.cs" />
+    <Compile Include="RetencionPago\RetencionesReceptorNacionalidad.cs" />
+    <Compile Include="RetencionPago\RetencionesTotales.cs" />
+    <Compile Include="RetencionPago\RetencionesTotalesImpRetenidos.cs" />
+    <Compile Include="RetencionPago\RetencionesTotalesImpRetenidosImpuesto.cs" />
+    <Compile Include="RetencionPago\RetencionesTotalesImpRetenidosTipoPagoRet.cs" />
     <Compile Include="SATManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
